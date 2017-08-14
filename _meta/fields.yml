@@ -1,9 +1,59 @@
 - key: syslogbeat
   title: syslogbeat
-  description:
+  description: >
+    A Beat implementation to collect syslog data from remote servers
   fields:
-    - name: counter
-      type: long
+    - name: logsource
+      type: keyword
       required: true
       description: >
-        PLEASE UPDATE DOCUMENTATION
+        Host that sent the syslog entry
+    - name: message
+      type: string
+      required: true
+      description: >
+        Full syslog message
+    - name: priority
+      type: int
+      description: >
+        Syslog priority value (unparsed)
+    - name: facility
+      type: int
+      description: >
+        Syslog facility value
+    - name: facility_label
+      type: keyword
+      description: >
+        Syslog facility value (human readable)
+    - name: severity
+      type: int
+      description: >
+        Syslog severity value
+    - name: severity_label
+      type: keyword
+      description: >
+        Syslog severity value (human readable)
+    - name: time
+      type: date
+      format: date
+      example: Aug 14 12:35:53
+      description: >
+        The syslog timestamp, parsed into a UTC value.
+        The location used can be set through the `location`
+        option in the configuration file
+    - name: program
+      type: keyword
+      description: >
+        The name of the program that generated the syslog entry
+    - name: pid
+      type: int
+      description: >
+        If available, the PID of the program that generated the syslog entry
+    - name: cee
+      type: bool
+      description: >
+        If available, denotes that an event contains CEE structured JSON data
+    - name: json
+      type: object
+      description: >
+        If available, contains JSON data parsed from the syslog message

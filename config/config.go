@@ -3,12 +3,12 @@
 
 package config
 
-import "time"
-
 type Config struct {
-	Period time.Duration `config:"period"`
+	UDPAddr string `config:"udpaddr"`
+	Location string `config:"location"`
 }
 
 var DefaultConfig = Config{
-	Period: 1 * time.Second,
+	UDPAddr: "0.0.0.0:1514",
+	Location: "UTC",
 }
