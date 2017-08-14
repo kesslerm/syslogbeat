@@ -1,0 +1,5 @@
+= Syslogbeat Docs
+
+Welcome to the Syslogbeat documentation.
+
+
